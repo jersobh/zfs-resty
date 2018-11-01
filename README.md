@@ -5,7 +5,6 @@
 
 #### Endpoints
 
-ors.add(app.router.add_get('/', mainController.index))
 ##### /auth
 method: POST
 params: 
