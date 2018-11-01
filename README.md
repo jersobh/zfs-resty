@@ -1,3 +1,5 @@
+![alt text](https://raw.githubusercontent.com/jersobh/zfs-resty/master/logo.png "Logo")
+
 ## Rest API for ZFS
 
 ### Usage
