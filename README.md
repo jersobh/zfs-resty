@@ -3,7 +3,7 @@
 ## Rest API for ZFS
 
 ### Usage
-**Must be run with root privileges**
+**Must be run with root privileges**  
 All parameters are json parameters. Eg.:
 { 
   "username": "admin",
