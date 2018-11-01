@@ -62,6 +62,7 @@ ZFS-Resty uses JWT. To authenticate send a POST request to /auth
 ```
 -p, --port: set the http port (default 8089)
 -s, --safe: true/false, (default false) Allow only local network ip's
+```
 
 #### Install requirements and run
 ```
