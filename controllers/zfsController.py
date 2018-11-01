@@ -150,8 +150,8 @@ async def replace_disk(pool, old_device, new_device):
 
 
 # set custom mountpoint
-async def set_mountpoint(mountpoint):
-    cmd = f'zpool set mountpoint={mountpoint}'
+async def set_mountpoint(mountpoint, pool):
+    cmd = f'zpool set mountpoint={mountpoint} {pool}'
     proc = await asyncio.create_subprocess_shell(
         cmd,
         stdout=asyncio.subprocess.PIPE,

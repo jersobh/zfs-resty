@@ -150,7 +150,7 @@ async def set_mountpoint(request):
     if check:
         try:
             data = await request.json()
-            res = await zfsController.set_mountpoint(data['mountpoint'])
+            res = await zfsController.set_mountpoint(data['mountpoint'], data['pool'])
             return await render.json({"success": res}, 200)
         except Exception as e:
             print(str(e))
