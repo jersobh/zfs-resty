@@ -31,8 +31,11 @@ method: **POST**
 params:     
  - name: Pool name
 
-##### /status
+##### /devices
+Get available devices devices  
+method: **GET**  
 
+##### /status
 method: **GET**  
 
 ##### /io-status
