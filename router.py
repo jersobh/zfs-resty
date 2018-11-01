@@ -16,6 +16,7 @@ def routes(app):
     cors.add(app.router.add_post('/auth', mainController.auth))
     cors.add(app.router.add_post('/create-pool', mainController.create_pool))
     cors.add(app.router.add_post('/delete-pool', mainController.delete_pool))
+    cors.add(app.router.add_get('/devices', mainController.get_storage_info))
     cors.add(app.router.add_get('/status', mainController.check_status))
     cors.add(app.router.add_get('/io-status', mainController.get_io_status))
     cors.add(app.router.add_post('/add-disk', mainController.add_disk))
