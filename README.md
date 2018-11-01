@@ -56,7 +56,7 @@ params:
 
 
 #### Authentication
-ZFS-Resty uses JWT. To authenticate send a POST request to /auth
+ZFS-Resty uses JWT. To authenticate send a POST request to /auth. A token will be returned and should be sent for all request's headers as "Authorization: <token>".
 
 #### Args 
 ```
