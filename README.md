@@ -3,7 +3,7 @@
 ## Rest API for ZFS
 
 ### Usage
-**Must be run as root**
+**Must be run with root privileges **
 
 #### Endpoints
 
