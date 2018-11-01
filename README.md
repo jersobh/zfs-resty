@@ -8,48 +8,48 @@
 #### Endpoints
 
 ##### /auth
-method: POST  
+method: **POST**  
 params: 
  - username: system username
  - password: user's password
 
 ##### /create-pool
-method: POST  
+method: **POST**  
 params:
  - name: Pool name
 
 ##### /delete-pool
-method: POST  
+method: **POST**  
 params:     
  - name: Pool name
 
 ##### /status
-method: GET  
+method: **GET**  
 
 ##### /io-status
-method: GET  
+method: **GET**  
 
 ##### /add-disk
-method: POST  
+method: **POST**  
 params:     
  - pool: Pool name
  - device: device path eg.: /dev/sdx
 
 ##### /add-spare-disk
-method: POST  
+method: **POST**  
 params:
  - pool: Pool name
  - device: device path eg.: /dev/sdx
 
 ##### /replace-disk
-method: POST  
+method: **POST**  
 params:
  - pool: Pool name
  - old_device: device path eg.: /dev/sdx
  - new_device: device path eg.: /dev/sdx
 
 ##### /mountpoint
-method: POST
+method: **POST**  
 params:
  - mountpoint: mountpoint path eg.: /path/to/mountpoint 
  - pool: Pool name
