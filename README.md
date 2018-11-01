@@ -13,34 +13,40 @@ All parameters are json parameters. Eg.:
 #### Endpoints
 
 ##### /auth
+Authentication endpoint. Returns a token to be used on Authorization header.  
 method: **POST**  
 params: 
  - username: system username
  - password: user's password
 
 ##### /create-pool
+Create a zfs pool  
 method: **POST**  
 params:
  - name: Pool name
 
 ##### /delete-pool
+Delete a pool  
 method: **POST**  
 params:     
  - name: Pool name
 
 ##### /status
+
 method: **GET**  
 
 ##### /io-status
 method: **GET**  
 
 ##### /add-disk
+Add a new disk to pool 
 method: **POST**  
 params:     
  - pool: Pool name
  - device: device path eg.: /dev/sdx
 
 ##### /add-spare-disk
+Add a spare disk that will be used in place of a corrupted disk  
 method: **POST**  
 params:
  - pool: Pool name
