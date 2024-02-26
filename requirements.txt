@@ -1,6 +1,6 @@
 aiohttp_jinja2==1.5.1
 aiohttp_cors==0.7.0
 aiohttp==3.9.2
-python_pam==1.8.4
+python_pam==2.0.2
 PyJWT==2.6.0
 pam==0.2.0
