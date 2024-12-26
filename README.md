@@ -2,6 +2,20 @@
 
 ![ZFS Resty Logo](https://raw.githubusercontent.com/jersobh/zfs-resty/master/logo.png "Logo")
 
+## Disclaimer
+
+This software is provided "as is," without any warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages, or other liability, whether in an action of contract, tort, or otherwise, arising from, out of, or in connection with the software or the use or other dealings in the software.
+
+Usage and Responsibility:
+
+The user assumes full responsibility for the usage of this software and the potential risks it may pose to their systems or data.
+This software interacts with ZFS, a powerful filesystem, and misconfiguration or misuse may lead to data loss or system instability.
+Recommendations:
+
+It is strongly recommended to test this software in a controlled, non-production environment before deploying it to critical systems.
+Regular backups should be made to mitigate potential risks associated with using this software.
+By using this software, you agree to these terms and absolve the authors and contributors of any liability.
+
 ## Overview
 ZFS-Resty is a RESTful API for managing ZFS pools and devices. The application provides endpoints for authentication, creating pools, managing disks, and retrieving ZFS status information.
 
