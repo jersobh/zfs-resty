@@ -1,12 +1,13 @@
 import uuid
 from datetime import datetime, timedelta
 from controllers import zfs_controller
+from controllers.auth import check_token
 import jwt
 import pam
 
 import render
 
-from config import JWT_SECRET, JWT_ALGORITHM, JWT_EXP_DELTA_SECONDS
+from config import logger
 
 
 
@@ -14,20 +15,13 @@ async def index(request):
     return await render.json({'error': 'nothing to see here...'}, 200)
 
 
-
-async def check_token(request):
-    try:
-        jwt_token = request.headers.get('Authorization', None)
-        payload = jwt.decode(jwt_token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
-        return payload['session_id']
-    except (jwt.DecodeError, jwt.ExpiredSignatureError):
-        return False
-
 async def create_pool(request):
+    
     check = await check_token(request)
     if check:
         try:
             data = await request.json()
+            logger.info(f"Creating pool {data['name']}")
             res = await zfs_controller.create_pool(data['name'], data['raid'], data['devices'])
             return await render.json({"success": res}, 200)
         except Exception as e:
@@ -42,6 +36,7 @@ async def delete_pool(request):
     if check:
         try:
             data = await request.json()
+            logger.info(f"Deleting pool {data['name']}")
             res = await zfs_controller.delete_pool(data['name'])
             return await render.json({"success": res}, 200)
         except Exception as e:
@@ -88,6 +83,7 @@ async def add_disk(request):
     if check:
         try:
             data = await request.json()
+            logger.info(f"Adding disk to {data['pool']}")
             res = await zfs_controller.add_new_disk(data['pool'], data['device'])
             return await render.json({"success": res}, 200)
         except Exception as e:
@@ -102,6 +98,7 @@ async def add_spare_disk(request):
     if check:
         try:
             data = await request.json()
+            logger.info(f"Adding spare disk to {data['pool']}")
             res = await zfs_controller.add_spare_disk(data['pool'], data['device'])
             return await render.json({"success": res}, 200)
         except Exception as e:
@@ -116,6 +113,7 @@ async def replace_disk(request):
     if check:
         try:
             data = await request.json()
+            logger.info(f"Replacing disk {data['old_device']} with {data['new_device']}")
             res = await zfs_controller.replace_disk(data['pool'], data['old_device'], data['new_device'])
             return await render.json({"success": res}, 200)
         except Exception as e:
@@ -130,6 +128,7 @@ async def set_mountpoint(request):
     if check:
         try:
             data = await request.json()
+            logger.info(f"Setting mountpoint {data['mountpoint']} to pool {data['pool']}")
             res = await zfs_controller.set_mountpoint(data['mountpoint'], data['pool'])
             return await render.json({"success": res}, 200)
         except Exception as e:

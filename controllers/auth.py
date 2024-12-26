@@ -6,7 +6,13 @@ import pam
 from config import logger, JWT_SECRET, JWT_ALGORITHM, JWT_EXP_DELTA_SECONDS
 import render
 
-
+async def check_token(request):
+    try:
+        jwt_token = request.headers.get('Authorization', None)
+        payload = jwt.decode(jwt_token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
+        return payload['session_id']
+    except (jwt.DecodeError, jwt.ExpiredSignatureError):
+        return False
 
 async def login(request):
     try:
