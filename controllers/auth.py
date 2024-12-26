@@ -26,7 +26,7 @@ async def login(request):
                 'exp': datetime.now(datetime.timezone.utc) + timedelta(seconds=JWT_EXP_DELTA_SECONDS)
             }
             jwt_token = jwt.encode(payload, JWT_SECRET, JWT_ALGORITHM)
-            return await render.json({'token': jwt_token.decode('utf-8')}, 200)
+            return await render.json({'token': jwt_token}, 200)
         else:
             return await render.json({'error': 'Authentication failed'}, 401)
     except Exception as e:
