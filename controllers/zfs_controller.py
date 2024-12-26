@@ -117,7 +117,7 @@ async def get_IO_stats():
 
 # Add a new disk to pool
 async def add_new_disk(pool, device):
-    cmd = f'zpool -f add {pool} {device}'
+    cmd = f'zpool add -f {pool} {device}'
     proc = await asyncio.create_subprocess_shell(
         cmd,
         stdout=asyncio.subprocess.PIPE,
@@ -136,7 +136,7 @@ async def add_new_disk(pool, device):
 
 # Add a spare disk
 async def add_spare_disk(pool, device):
-    cmd = f'zpool -f create {pool} spare {device}'
+    cmd = f'zpool create -f {pool} spare {device}'
     proc = await asyncio.create_subprocess_shell(
         cmd,
         stdout=asyncio.subprocess.PIPE,
