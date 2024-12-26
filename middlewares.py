@@ -4,6 +4,11 @@ from config import JWT_SECRET, JWT_ALGORITHM, logger
 
 @web.middleware
 async def auth_middleware(request, handler):
+    # Skip authentication for the /auth route
+    if request.path == '/auth':
+        return await handler(request)
+
+    # Check for the Authorization header
     jwt_token = request.headers.get('Authorization')
     if not jwt_token:
         logger.warning("Missing Authorization header")

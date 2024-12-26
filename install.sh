@@ -7,33 +7,15 @@ set -e
 # Get the current directory
 CURRENT_DIR=$(pwd)
 
-# Ensure Python is installed
-if ! command -v python3 &> /dev/null; then
-    echo "Python3 is not installed. Please install it and rerun the script."
-    exit 1
-fi
-
-# Ensure pip is installed
-if ! command -v pip3 &> /dev/null; then
-    echo "pip3 is not installed. Please install it and rerun the script."
-    exit 1
-fi
-
-# Ensure virtualenv is installed
-if ! python3 -m venv --help &> /dev/null; then
-    echo "virtualenv is not installed. Installing..."
-    pip3 install virtualenv
-fi
-
 # Create a virtual environment
-VENV_DIR="$CURRENT_DIR/venv"
+VENV_DIR="$CURRENT_DIR/.venv"
 if [ ! -d "$VENV_DIR" ]; then
     echo "Creating virtual environment in $VENV_DIR"
     python3 -m venv "$VENV_DIR"
 fi
 
 # Activate the virtual environment
-source "$VENV_DIR/bin/activate"
+. "$VENV_DIR/bin/activate"
 
 # Install dependencies
 pip install -r "$CURRENT_DIR/requirements.txt"
