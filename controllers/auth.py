@@ -1,6 +1,5 @@
 from datetime import datetime, timedelta, timezone
 import uuid
-from aiohttp import web
 import jwt
 import pam
 from config import logger, JWT_SECRET, JWT_ALGORITHM, JWT_EXP_DELTA_SECONDS

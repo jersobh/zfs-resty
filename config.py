@@ -9,7 +9,7 @@ load_dotenv()
 # Constants
 JWT_SECRET = os.getenv("JWT_SECRET", "7wXJ4kxCRWJpMQNqRVTVR3Qbc")
 JWT_ALGORITHM = os.getenv("JWT_ALGORITHM", "HS256")
-JWT_EXP_DELTA_SECONDS = int(os.getenv("JWT_EXP_DELTA_SECONDS", 180))
+JWT_EXP_DELTA_SECONDS = int(os.getenv("JWT_EXP_DELTA_SECONDS", 3600))
 LOG_FILENAME = os.getenv("LOG_FILENAME", "/tmp/zfs-resty.log")
 LOG_LEVEL = getattr(logging, os.getenv("LOG_LEVEL", "INFO"))
 
