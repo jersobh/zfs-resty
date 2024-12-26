@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Installation script for ZFS REST API Service
+# Installation script for ZFS REST API Service with Virtualenv
 
 set -e
 
@@ -19,8 +19,24 @@ if ! command -v pip3 &> /dev/null; then
     exit 1
 fi
 
+# Ensure virtualenv is installed
+if ! python3 -m venv --help &> /dev/null; then
+    echo "virtualenv is not installed. Installing..."
+    pip3 install virtualenv
+fi
+
+# Create a virtual environment
+VENV_DIR="$CURRENT_DIR/venv"
+if [ ! -d "$VENV_DIR" ]; then
+    echo "Creating virtual environment in $VENV_DIR"
+    python3 -m venv "$VENV_DIR"
+fi
+
+# Activate the virtual environment
+source "$VENV_DIR/bin/activate"
+
 # Install dependencies
-pip3 install -r "$CURRENT_DIR/requirements.txt"
+pip install -r "$CURRENT_DIR/requirements.txt"
 
 # Create systemd service file
 SERVICE_FILE="/etc/systemd/system/zfs-resty.service"
@@ -35,7 +51,7 @@ After=network.target
 Type=simple
 User=root
 WorkingDirectory=$CURRENT_DIR
-ExecStart=/usr/bin/python3 $CURRENT_DIR/zfs-resty.py
+ExecStart=$VENV_DIR/bin/python $CURRENT_DIR/zfs-resty.py
 Restart=always
 Environment="LOG_LEVEL=INFO"
 Environment="LOG_FILENAME=/var/log/zfs-resty.log"
