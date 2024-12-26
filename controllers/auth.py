@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import uuid
 from aiohttp import web
 import jwt
@@ -23,7 +23,7 @@ async def login(request):
             payload = {
                 'user': user,
                 'session_id': str(uuid.uuid4()),
-                'exp': datetime.now(datetime.timezone.utc) + timedelta(seconds=JWT_EXP_DELTA_SECONDS)
+                'exp': datetime.now(timezone.utc) + timedelta(seconds=JWT_EXP_DELTA_SECONDS)
             }
             jwt_token = jwt.encode(payload, JWT_SECRET, JWT_ALGORITHM)
             return await render.json({'token': jwt_token}, 200)
