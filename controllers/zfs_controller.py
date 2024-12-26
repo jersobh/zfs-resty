@@ -3,7 +3,7 @@ from config import logger
 
 # Create a Pool
 async def create_pool(name='default-pool', mode='', devices=''):
-    cmd = f'zpool create {name} {mode} {devices}'
+    cmd = f'zpool create {name} {mode} {" ".join(devices)}'
     proc = await asyncio.create_subprocess_shell(
         cmd,
         stdout=asyncio.subprocess.PIPE,
