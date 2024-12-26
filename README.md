@@ -175,7 +175,7 @@ Response:
 ### Create a Pool
 Request:
 ```bash
-curl -X POST http://localhost:8089/create-pool -H "Authorization: Bearer <token>" -H "Content-Type: application/json" -d '{"name": "mypool", "raid": "mirror", "devices": ["/dev/sda", "/dev/sdb"]}'
+curl -X POST http://localhost:8089/create-pool -H "Authorization: <token>" -H "Content-Type: application/json" -d '{"name": "mypool", "raid": "mirror", "devices": ["/dev/sda", "/dev/sdb"]}'
 ```
 
 Response:
