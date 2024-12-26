@@ -100,8 +100,8 @@ async def get_disk_info():
 
 
 # Get pool I/O stats
-async def get_IO_stats(pool):
-    cmd = f'zpool iostat -v {pool}'
+async def get_IO_stats():
+    cmd = f'zpool iostat -v'
     proc = await asyncio.create_subprocess_shell(
         cmd,
         stdout=asyncio.subprocess.PIPE,
