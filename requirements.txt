@@ -5,4 +5,4 @@ python_pam==2.0.2
 PyJWT==2.10.1
 pam==0.2.0
 six==1.17.0
-python-dotenv==1.0.1
+python-dotenv==1.1.0
